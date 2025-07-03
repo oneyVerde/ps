@@ -1,3 +1,16 @@
+# 비바라기 시전
+    # 비구름 생성 -> create_cloud("init")
+    # 구름 이동 -> move_cloud()
+
+# 구름 이동 num_move만큼
+    # 1. d(i) 방향으로 s(i)칸 이동 -> move() board 1,1과 n,n 이어서 처리
+    # 2. 구름 칸에 비내리기해서 물의 양 증가 -> rain() -> add_water()
+    # 3. 구름 사라지기 -> remove_cloud()
+    # 4. 물이 증가한 칸에 물복사버그 마법 시전 -> water_copy_bug() -> get_diagonal(): board 잇지 않고 처리 -> add_water()
+    # 5. 물이 2 이상인 칸에 구름 생성 후 물의 양 -2 -> create_cloud("새로운 구름") -> add_water()
+
+# count_water()
+
 import sys
 input = sys.stdin.readline
 
@@ -38,7 +51,6 @@ def move(distance, direction):
     for i in range(board_size):
         for j in range(board_size):
             if cloud[i][j]:
-                # 엥 파이썬은 list[-3]이거 되잖아
                 row = (i + direction_key[direction - 1][0]*distance) % board_size
                 col = (j + direction_key[direction - 1][1]*distance) % board_size
                 cloud[i][j] = 0
