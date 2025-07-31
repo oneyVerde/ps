@@ -6,7 +6,7 @@ for _ in range(n):
 path = [[0]*n for _ in range(n)]
 path[n-1][n-1] = 1
 board[n-1][n-1] = 1
-N = n*n
+
 for i in range(2*(n-1), -1, -1):
     for j in range(min(n-1, i), max(0, i-n+1)-1, -1):
         row, col = j+board[j][i-j], i-j+board[j][i-j]
